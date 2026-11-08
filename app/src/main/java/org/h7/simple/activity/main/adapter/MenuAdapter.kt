@@ -8,12 +8,11 @@
 
 package org.h7.simple.activity.main.adapter
 
-import android.databinding.DataBindingUtil
-import android.support.v7.widget.RecyclerView
+import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.menu_item.view.*
 import org.h7.simple.R
 import org.h7.simple.data.menu.MenuItem
 import org.h7.simple.data.menu.OnMenuClickListener
@@ -45,7 +44,7 @@ class MenuAdapter(private var items : List<MenuItem>,private var clickListener: 
             binding.item = item
             binding.click = View.OnClickListener { clickListener.onMenuItemClick(item) }
             binding.executePendingBindings()
-            binding.root.icon.setImageResource(item.icon)
+            binding.icon.setImageResource(item.icon)
         }
     }
 }

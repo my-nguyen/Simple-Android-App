@@ -8,8 +8,8 @@
 
 package org.h7.simple.data.menu
 
-import android.databinding.ObservableField
-import android.databinding.ObservableInt
+import androidx.databinding.ObservableField
+import androidx.databinding.ObservableInt
 import android.graphics.Color
 
 /**

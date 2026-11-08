@@ -8,13 +8,12 @@
 
 package org.h7.simple.activity.main
 
-import android.databinding.DataBindingUtil
+import androidx.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v4.view.GravityCompat
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.app_bar_main.*
+import androidx.core.view.GravityCompat
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.recyclerview.widget.LinearLayoutManager
 import org.h7.simple.R
 import org.h7.simple.activity.main.adapter.MenuAdapter
 import org.h7.simple.config.menu.INavViewModel
@@ -29,31 +28,33 @@ abstract class MainActivity : AppCompatActivity() {
     abstract fun getNavViewModel():INavViewModel
 
     private lateinit var modelNavigation: INavViewModel
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding : ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         modelNavigation = getNavViewModel()
         binding.footer = modelNavigation.getMenuFooter(this)
         binding.header = modelNavigation.getMenuHeader(this)
         initMenu()
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
         val toggle = EndDrawerToggle(
-                this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-        drawerLayout.addDrawerListener(toggle)
+                this, binding.drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        binding.drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
     }
 
     private fun initMenu() {
-        menuItems.adapter = MenuAdapter(modelNavigation.getMenuItems(),object:OnMenuClickListener{
+        binding.menuItems.adapter = MenuAdapter(modelNavigation.getMenuItems(),object:OnMenuClickListener{
             override fun onMenuItemClick(item: MenuItem) {
                 if (this@MainActivity.onMenuItemClick(item))
                     hideMenuIfOpened()
             }
 
         })
-        menuItems.layoutManager = LinearLayoutManager(this)
+        binding.menuItems.layoutManager = LinearLayoutManager(this)
     }
 
     override fun onBackPressed() {
@@ -63,8 +64,8 @@ abstract class MainActivity : AppCompatActivity() {
     }
 
     private fun hideMenuIfOpened():Boolean{
-        return if (drawerLayout.isDrawerOpen(GravityCompat.END)) {
-            drawerLayout.closeDrawer(GravityCompat.END)
+        return if (binding.drawerLayout.isDrawerOpen(GravityCompat.END)) {
+            binding.drawerLayout.closeDrawer(GravityCompat.END)
             true
         } else {
             false

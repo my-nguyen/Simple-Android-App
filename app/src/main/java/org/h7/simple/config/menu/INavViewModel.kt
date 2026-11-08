@@ -8,7 +8,7 @@
 
 package org.h7.simple.config.menu
 
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.ViewModel
 import android.content.Context
 import org.h7.simple.data.menu.Footer
 import org.h7.simple.data.menu.Header

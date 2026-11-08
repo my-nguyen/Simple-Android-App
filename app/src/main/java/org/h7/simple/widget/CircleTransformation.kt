@@ -9,7 +9,7 @@
 package org.h7.simple.widget
 
 import android.graphics.*
-import android.support.annotation.ColorInt
+import androidx.annotation.ColorInt
 import com.squareup.picasso.Transformation
 
 /**
@@ -38,7 +38,7 @@ class CircleTransformation : Transformation {
             source.recycle()
         }
 
-        val bitmap = Bitmap.createBitmap(size, size, source.config)
+        val bitmap = Bitmap.createBitmap(size, size, squaredBitmap.config ?: Bitmap.Config.ARGB_8888)
 
         val canvas = Canvas(bitmap)
         val paint = Paint()

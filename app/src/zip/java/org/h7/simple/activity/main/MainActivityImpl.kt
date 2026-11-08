@@ -8,7 +8,7 @@
 
 package org.h7.simple.activity.main
 
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import android.widget.Toast
 import org.h7.simple.Constants
 import org.h7.simple.R
@@ -23,7 +23,7 @@ import org.h7.simple.widget.openUrl
 class MainActivityImpl: MainActivity() {
 
     override fun getNavViewModel(): INavViewModel {
-        return ViewModelProviders.of(this).get(NavViewModel::class.java)
+        return ViewModelProvider(this)[NavViewModel::class.java]
     }
 
     override fun onMenuItemClick(item: MenuItem):Boolean {

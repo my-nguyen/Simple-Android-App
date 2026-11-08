@@ -7,8 +7,7 @@
   ~ created by yatko.com
   -->
 
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.h7.simple">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -20,9 +19,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <meta-data
-            android:name="io.fabric.ApiKey"
-            android:value="71cabaa9917eaa271729cd9ccea1f341baaa8c0a" />
     </application>
 
 </manifest>

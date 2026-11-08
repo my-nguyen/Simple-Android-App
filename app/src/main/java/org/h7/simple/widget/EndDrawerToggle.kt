@@ -9,11 +9,11 @@
 package org.h7.simple.widget
 
 import android.app.Activity
-import android.support.v4.view.GravityCompat
-import android.support.v4.widget.DrawerLayout
-import android.support.v7.graphics.drawable.DrawerArrowDrawable
-import android.support.v7.widget.AppCompatImageButton
-import android.support.v7.widget.Toolbar
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.appcompat.graphics.drawable.DrawerArrowDrawable
+import androidx.appcompat.widget.AppCompatImageButton
+import androidx.appcompat.widget.Toolbar
 import android.view.View
 import org.h7.simple.R
 
